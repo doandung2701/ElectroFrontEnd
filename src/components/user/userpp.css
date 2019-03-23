@@ -1,0 +1,242 @@
+.user-profile-page {
+    padding: 10px 75px 10px 75px;
+    overflow: auto;
+}
+
+.user-profile-page .profile-page-nav {
+    float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    width: 300px;
+    padding: 0px 15px 0px 0px;
+}
+
+.user-profile-page .profile-page-nav .basic-user-info img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    float: left;
+}
+
+.user-profile-page .profile-page-nav .basic-user-info button {
+    display: none;
+}
+
+.user-profile-page .profile-page-nav .basic-user-info {
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.user-profile-page .profile-page-nav .basic-user-info p {
+    float: right;
+    width: 80%;
+}
+
+.basic-user-info,
+.account-manage,
+.transac-manage {
+    display: block;
+
+}
+
+.profile-page-nav .title {
+    border-left: 4px solid red;
+    padding: 3px 3px 3px 7px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+.profile-page-nav a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 8px;
+    display: block;
+    margin-bottom: 5px;
+    padding: 2px 0px 2px 5px;
+}
+
+.profile-page-nav a:hover {
+    background-color: red;
+    color: white;
+}
+
+.user-profile-page .profile-page-content {
+    overflow: auto;
+    padding-left: 75px;
+    margin-left: 100px;
+
+}
+
+.user-profile-page .profile-page-content .ava-section {
+    overflow: auto;
+    width: 150px;
+}
+
+.user-profile-page .profile-page-content .ava-section .ava-ctn {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    height: auto;
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.user-profile-page .profile-page-content .ava-section .ava-ctn img {
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+}
+
+.user-profile-page .profile-page-content .ava-section .ava-ctn p {
+    position: absolute;
+    font-size: 10px;
+    left: 0px;
+    bottom: -15px;
+    background-color: gray;
+    color: white;
+    height: 23%;
+    width: 100%;
+    text-align: center;
+}
+
+.user-profile-page .profile-page-content .form-section {
+    width: 500px;
+    margin-left: 75px;
+}
+
+.user-profile-page .profile-page-content .form-section,
+.user-profile-page .profile-page-content .ava-section {
+    display: block;
+    float: left;
+}
+
+.user-profile-page .profile-page-content .form-section input {
+    display: block;
+    margin-bottom: 15px;
+    padding: 8px 6px;
+    width: 95%;
+    color: black;
+}
+
+.user-profile-page .profile-page-content .form-section label {
+    color: black;
+    font-weight: bold;
+}
+
+.user-profile-page .profile-page-content .form-section button {
+    border: none;
+    background-color: red;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .user-profile-page .profile-page-content .form-section,
+    .user-profile-page .profile-page-content .ava-section {
+        float: none;
+        display: block;
+        margin: 0px;
+    }
+}
+
+.manage-ctn .link-ctn.active {
+    height: 100px;
+}
+
+.manage-ctn .link-ctn {
+    height: 0px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .user-profile-page .profile-page-nav,
+    .user-profile-page .profile-page-content {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+
+    .user-profile-page .profile-page-nav {
+        margin-bottom: 20px;
+        border: none;
+    }
+
+    .user-profile-page .profile-page-content .ava-section {
+        margin-left: 40%;
+    }
+
+    .user-profile-page .profile-page-content .form-section {
+        width: 100%;
+    }
+
+    .user-profile-page .profile-page-nav .manage-ctn {
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+
+    .user-profile-page .profile-page-nav .manage-ctn.active {
+        height: 300px;
+    }
+
+    .user-profile-page .profile-page-nav .basic-user-info button {
+        display: block;
+        margin-left: 90%;
+        background-color: red;
+        cursor: pointer;
+        color: white;
+        outline: none !important;
+        border: none;
+        border-radius: 4px;
+    }
+}
+
+.usercomp-enter {
+    opacity: 0.01;
+
+}
+
+.usercomp-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.usercomp-exit {
+    opacity: 1;
+}
+
+.usercomp-exit-active {
+    opacity: 0.01;
+    transition: opacity 500ms ease-in;
+}
+
+.manage-ctn .nav-item.active{
+    background-color: red;
+    color: white;
+}
+
+.profile-page-content .page-content-item{
+    animation: slide 0.5s;
+
+}
+
+@keyframes slide {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);        
+    }
+}

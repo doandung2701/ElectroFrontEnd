@@ -1,0 +1,124 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    font-family: Comic Sans MS;
+}
+
+.regis-page{
+    background-image: url('http://sf.co.ua/16/01/wallpaper-5da9.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    overflow: auto;
+    padding: 5%;
+    width: 100%;
+}
+
+.regis-page .regis-page-left{
+    margin-top: 20px;
+    float: left;
+    width: 40%;
+    color: white;
+}
+
+.regis-page .regis-page-right{
+    float: right;
+    width: 50%;
+    color: white;
+}
+
+.regis-page-title{
+    border-bottom: 1px solid white;
+}
+.regis-page-right{
+    padding: 20px;
+    margin-left: 100px;
+}
+.slogan{
+    width: 60%;
+    font-size: 52px;
+
+}
+
+.regis-page-right input{
+    padding: 14px 16px;
+    display: block;
+    float: none;
+    width: 80%;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    outline: none;
+    color: black;
+}
+
+.regis-page-right #regis-btn{
+    padding: 14px 16px;
+    width: 80%;
+    text-align: center;
+    color: white;
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Comic Sans MS;
+    display: block;
+    float: none;
+}
+
+#regis-btn:hover{
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.5s;
+    border: 3px solid green;
+    cursor: pointer;
+}
+
+.regis-page a{
+    text-decoration: none;
+    color: rgb(163, 216, 16);
+}
+
+.regis-page p:hover a{
+    transition: 0.5s;
+    color: aqua;
+    transform: scale(2);
+}
+
+@media screen and (max-width: 800px){
+    .regis-page .regis-page-left,.regis-page .regis-page-right{
+        width: 95%;
+        display: block;
+        float: none;
+        margin-left: 0px;
+    }
+
+    .regis-page .regis-page-left .slogan{
+        width: 100%;
+    }
+}
+
+#regis-btn {
+    padding: 14px 16px;
+    width: 87%;
+    text-align: center;
+    color: white;
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: Comic Sans MS;
+    display: block;
+    float: none;
+    left: 0px;
+}
+
+#regis-btn:hover {
+    background-color: rgba(184, 30, 30, 1);
+    transition: 0.5s;
+    border: none;
+    cursor: pointer;
+}

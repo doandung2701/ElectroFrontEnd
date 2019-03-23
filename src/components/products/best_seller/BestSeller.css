@@ -1,0 +1,18 @@
+.box-scroll .scroll{
+    animation: scroll 30s linear infinite;
+    -webkit-animation: scroll 30s linear infinite;
+    top: 100%;
+}
+
+@keyframes scroll{
+    0%{
+        top: 100%;
+    }
+    100%{
+        top: -230%;
+    }
+}
+
+.box-scroll:hover .scroll{
+    animation-play-state: paused;
+}

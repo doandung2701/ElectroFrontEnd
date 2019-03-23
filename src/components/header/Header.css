@@ -1,0 +1,30 @@
+
+
+.dropdown-menu1{
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    color: black;
+    padding: 14px 0px;
+    display: none;
+    width: 18%;
+    top: 100%;
+    box-shadow: 3px 3px 20px blue;
+}
+
+.drp-ctn:hover{
+    cursor: pointer;
+}
+.dropdown-menu1.active{
+    display: block;
+}
+.dropdown-item1{
+    padding: 6px 8px;
+    display: block;
+}
+
+.dropdown-item1:hover{
+    background-color: blue;
+    color: white;
+}
+

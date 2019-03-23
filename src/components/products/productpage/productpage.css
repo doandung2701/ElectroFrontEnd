@@ -1,0 +1,50 @@
+.product-page-img-sm {
+    opacity: 0.5;
+    padding: 2px;
+    border: 1px solid #e2d3d3;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.product-page-img-sm.active {
+    opacity: 1;
+    border: 1px solid #3d3838;
+}
+
+.product-page-img-sm:hover{
+    opacity: 1;
+    border: 1px solid #3d3838;
+    transform: scale(1.1);
+}
+
+.select-color{
+    margin-bottom: 20px;
+}
+
+.select-color button{
+   background-color: transparent;
+   color: blue;
+   outline: none;
+}
+
+.select-color button:active{
+    background-color: blue;
+    color: white;
+}
+.occasion-cart .button{
+    display: block;
+    float:  left !important;
+}
+
+.price-filter input{
+    display: inline-block;
+    width: 100px;
+    border: 1px solid lightblue;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.review-filter span{
+    display: inline-block;
+}

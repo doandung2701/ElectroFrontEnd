@@ -1,26 +1,81 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import HeaderContainer from './components/header/HeaderContainer';
+import TopProduct from './components/products/top_product/TopProduct';
+import Footer from './components/footer/Footer';
+import CopyRight from './components/common/CopyRight';
+import MiddleSection from './components/common/MiddleSection';
+import {Switch,Route} from 'react-router-dom';
+import ProductPageContainer from './components/products/productpage/ProductPageContainer';
+import NotFound from './components/common/NotFound';
+import LoginPageContainer from './components/login/LoginPageContainer';
+import Contact from './components/contact/Contact';
+import RegisterPageContainer from './components/register/RegisterPageContainer';
+import Alert from 'react-s-alert';
 import './App.css';
+import {Router} from 'react-router-dom';
+import {history} from './helpers/helper'
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+import { topTop } from './helpers/helper';
+import $ from 'jquery';
+import PrivateRoute from './components/common/PrivateRoute';
+import 'antd/dist/antd.css';
+import UserProfilePageContainer from './components/user/UserProfilePageContainer';
+import LoginModal from './components/login/LoginModal';
+import LoadingScreen from './components/common/LoadingScreen';
+
 
 class App extends Component {
+
+  componentDidMount(){
+      // var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      // console.log(typeof winScroll);
+      // if (winScroll>50){
+      //   document.getElementById("to-top-btn").style.display="block";
+      // }else{
+      //   document.getElementById("to-top-btn").style.display="none";
+
+      // }
+      setTimeout(()=>
+      $('html,body').on('scroll', () => {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        if (winScroll >= 150) {
+          document.getElementById("to-top-btn").style.display = "block";
+        } else {
+          document.getElementById("to-top-btn").style.display = "none";
+        }
+      }),500)
+      }
+  
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Router history={history}>
+        <div className="App">
+          <button id="to-top-btn" onClick={()=>topTop(0)}>
+            <i className="fas fa-level-up-alt"></i>
+          </button>
+          <Alert stack={{limit: 5}} />
+          <LoadingScreen />
+          <HeaderContainer />
+          <Switch>
+              <Route path="/" exact component={TopProduct}/>
+              <Route path="/editor" component={LoginModal}/>
+              <Route path="/products/brands/:brandId" component={TopProduct} />
+              <Route path="/products/categories/:categoryId" component={TopProduct} />
+              <Route path="/products/all-products" exact component={TopProduct} />
+              <Route path="/products/single/:id" exact component={ProductPageContainer}/>
+              <Route path="/account/login" exact component={LoginPageContainer} />
+              <Route path="/account/regis" exact component={RegisterPageContainer}/>
+              <PrivateRoute path="/account/my-profile" component={UserProfilePageContainer}/>
+              <Route path="/contact" exact component={Contact}/>
+              <Route component={NotFound} />
+          </Switch>
+          <MiddleSection />
+          <Footer />
+          <CopyRight />
       </div>
+      </Router>
     );
   }
 }
