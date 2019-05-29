@@ -26,7 +26,6 @@ class TopProductRight extends React.Component{
     }
 
     render(){
-      console.log(this.state)
         return(
             <div className="col-lg-3 mt-lg-0 mt-4 p-lg-0">
             <div className="side-bar p-sm-4 p-3">

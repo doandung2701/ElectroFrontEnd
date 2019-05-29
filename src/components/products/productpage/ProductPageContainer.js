@@ -6,11 +6,13 @@ import ProductPage from './ProductPage';
 import { getReviewsByProductId} from '../../review/ReviewAction';
 import {changeCartItemQtyAsync} from '../../cart/CartAction';
 import { getCommentsByProductId } from '../../comment/CommentAction';
+import { addSeenProduct, addSeenProductLocal } from '../top_product/product_user/seen_product/SeenProductAction';
 
 var mapStateToProps = state =>{
     return{
         singleProduct: state.singleProduct,
-        cart: state.cart
+        cart: state.cart,
+        isLoggedIn: state.authentication.isLoggedIn
     }
 }
 
@@ -27,6 +29,12 @@ var mapDispatchToProps = dispatch =>{
         },
         getCommentsByProductId: (id)=>{
             dispatch(getCommentsByProductId(id));
+        },
+        addSeenProduct: (productId)=>{
+            dispatch(addSeenProduct(productId));
+        },
+        addSeenProductLocal: (product)=>{
+            dispatch(addSeenProductLocal(product));
         }
     }
 }

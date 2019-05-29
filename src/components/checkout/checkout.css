@@ -1,0 +1,10 @@
+.App .empty-cart{
+    margin: 50px;
+    text-align: center;
+}
+
+.App .empty-cart .empty-cart-img{
+    height: 100px;
+    width: 100px;
+}
+

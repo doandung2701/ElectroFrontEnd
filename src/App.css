@@ -1,9 +1,10 @@
-html, body{
+html,
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 
-#to-top-btn{
+#to-top-btn {
   position: fixed;
   bottom: 5%;
   z-index: 2;
@@ -21,7 +22,7 @@ html, body{
   transition: 0.5s;
 }
 
-#to-top-btn:hover{
+#to-top-btn:hover {
   opacity: 1;
 }
 
@@ -144,26 +145,26 @@ html, body{
 
 ::-webkit-scrollbar {
   width: 5px;
- 
+
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: rgb(161, 180, 233);
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: green; 
-   border-radius: 20px;
+  background: green;
+  border-radius: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
-.men-thumb-item .count-down{
+.men-thumb-item .count-down {
   position: absolute;
   top: -5%;
   /* left: -30px; */
@@ -172,18 +173,20 @@ html, body{
   border-radius: 15px;
   width: 58px;
 }
-.men-thumb-item .count-down .ant-statistic-content{
+
+.men-thumb-item .count-down .ant-statistic-content {
   overflow: auto;
   position: absolute;
   bottom: -10%;
   padding: 3px 0px 0px 6px;
 }
-.men-thumb-item .count-down .ant-statistic-content .ant-statistic-content-value{
+
+.men-thumb-item .count-down .ant-statistic-content .ant-statistic-content-value {
   font-size: 11px;
   color: white;
 }
 
-.App .loading-screen{
+.App .loading-screen {
   height: 100%;
   width: 100%;
   background-color: rgba(1, 1, 1, 0.5);
@@ -194,14 +197,61 @@ html, body{
   background-position: center;
 }
 
-.App .cmt-rep-box-cnt{
+.App .edit-cmt-rep-box-cnt {
   width: 90%;
   border: 1px solid lightblue;
   border-radius: 15px;
   position: relative;
   padding: 10px;
   height: 100px;
+  display: none;
   overflow: hidden;
+}
+
+.App .edit-cmt-rep-box-cnt.active {
+  display: block !important;
+}
+
+.App .edit-cmt-rep-box-cnt.active {
+  display: block;
+}
+
+.App .edit-cmt-rep-box-cnt .edit-cmt-rep-box {
+  width: 95%;
+  height: 75px;
+  border-radius: 15px;
+  padding: 4px 8px;
+  border: none;
+  resize: none;
+
+}
+
+.App .edit-cmt-rep-box-cnt button {
+  float: right;
+  margin-top: 20px;
+  border: none;
+  background-color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  color: blue;
+  outline: none;
+}
+
+
+.App .cmt-rep-box-cnt {
+  width: 90%;
+  border: 1px solid lightblue;
+  border-radius: 15px;
+  position: relative;
+  padding: 10px;
+  height: 100px;
+  display: none;
+  overflow: hidden;
+
+}
+
+.App .cmt-rep-box-cnt.active {
+  display: block;
 }
 
 .App .cmt-rep-box-cnt .cmt-rep-box {
@@ -214,7 +264,7 @@ html, body{
 
 }
 
-.App .cmt-rep-box-cnt button{
+.App .cmt-rep-box-cnt button {
   float: right;
   margin-top: 20px;
   border: none;
@@ -223,4 +273,270 @@ html, body{
   cursor: pointer;
   color: blue;
   outline: none;
+}
+
+.App .cmt-box-cnt {
+  width: 95%;
+  border: 1px solid lightblue;
+  border-radius: 15px;
+  position: relative;
+  padding: 10px;
+  height: 100px;
+  overflow: hidden;
+
+}
+
+.App .cmt-box-cnt.active {
+  display: block;
+}
+
+.App .cmt-box-cnt .cmt-box {
+  width: 95%;
+  height: 75px;
+  border-radius: 15px;
+  padding: 4px 8px;
+  border: none;
+  resize: none;
+  outline: none;
+
+}
+
+.App .cmt-box-cnt button {
+  float: right;
+  margin-top: 20px;
+  border: none;
+  background-color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  color: blue;
+  outline: none;
+}
+
+.App .cmt-box-cnt button:hover,
+.App .cmt-rep-box-cnt button:hover,
+.App .edit-cmt-box-cnt button:hover,
+.App .edit-cmt-rep-box-cnt button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  color: red;
+}
+
+.App .edit-cmt-box-cnt {
+  width: 90%;
+  border: 1px solid lightblue;
+  border-radius: 15px;
+  position: relative;
+  padding: 10px;
+  height: 100px;
+  overflow: hidden;
+
+  display: none;
+}
+
+.App .edit-cmt-box-cnt.active {
+  display: block !important;
+}
+
+.App .edit-cmt-box-cnt.active {
+  display: block;
+}
+
+.App .edit-cmt-box-cnt .edit-cmt-box {
+  width: 95%;
+  height: 75px;
+  border-radius: 15px;
+  padding: 4px 8px;
+  border: none;
+  resize: none;
+
+}
+
+.App .edit-cmt-box-cnt button {
+  float: right;
+  margin-top: 20px;
+  border: none;
+  background-color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  color: blue;
+  outline: none;
+}
+
+.App .modal-gallery{
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.App .modal-gallery .modal-gallery-body{
+  height: 70%;
+  width: 70%;
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.App .modal-gallery .modal-gallery-body .img-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.App .modal-gallery .modal-gallery-body .img-container img{
+  width: auto;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+}
+
+.App .modal-gallery .modal-gallery-body .img-container button,.App .modal-gallery button{
+  background-color: transparent;
+  color: white;
+  font-size: 32px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.App .modal-gallery .modal-gallery-body .img-container .btn-prev{
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+.App .modal-gallery .modal-gallery-body .img-container .btn-next{
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+.App .example{
+  overflow: auto;
+  padding: 50px;
+  background-color: rgb(238, 215, 219);
+  margin-bottom: 50px;
+}
+
+.App .example .checkout{
+  overflow: auto;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.App .example .checkout button{
+  padding: 9px 9px;
+  color: white;
+  cursor: pointer;
+  float: left;
+  display: block;
+  font-size: 15.5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: rgb(100, 100, 247);
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  margin-bottom: 10px;
+}
+.App .example .checkout .StripeElement {
+  box-sizing: border-box;
+  height: 43px;
+  margin-bottom: 10px;
+  float: left;
+  display: block;
+  width: 80%;
+  padding: 10px 12px;
+  margin-right: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.App .example .checkout .StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.App .example .checkout .StripeElement--invalid {
+  border-color: #fa755a;
+}
+.App .example .checkout .__PrivateStripeElement-input {
+  border-color: #fa755a !important;
+  height: 500px !important;
+}
+
+.App .example .checkout .StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.product-men{
+  animation: appear 1s;
+}
+
+@keyframes appear{
+  0%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .App .cmt-box-cnt .cmt-box {
+    width: 85%;
+  }
+
+  .App .cmt-rep-box-cnt .cmt-rep-box {
+    width: 85%;
+
+  }
+
+  .App .edit-cmt-rep-box-cnt .edit-cmt-rep-box {
+    width: 85%;
+  }
+  .App .edit-cmt-box-cnt .edit-cmt-box{
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .App .cmt-box-cnt button,
+  .App .cmt-rep-box-cnt button,
+  .App .edit-cmt-box-cnt button,
+  .App .edit-cmt-rep-box-cnt button {
+    margin: 0px;
+    font-size: 14;
+    position: absolute;
+    right: 5px;
+    top: 20px;
+  }
+  .App .modal-gallery .modal-gallery-body .img-container .btn-next{
+    color: red;
+  }
+
+  .App .modal-gallery .modal-gallery-body .img-container .btn-prev{
+    color: red;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .App .modal-gallery .modal-gallery-body .img-container .btn-next{
+    color: red;
+    right: -150px;
+  }
+
+  .App .modal-gallery .modal-gallery-body .img-container .btn-prev{
+    color: red;
+}
 }

@@ -1,6 +1,6 @@
 import { SEARCHING_PRODUCTS, SEARCH_PRODUCTS_SUCCESS, SEARCH_PRODUCTS_FAIL, CLEAR_SEARCH_PRODUCTS } from "../../constants/constants";
 import { findProductsByNameApi } from "../../api/ProductsApi";
-import Alert from 'react-s-alert';
+import { message } from "antd";
 
 const searchingProducts = ()=>({
     type: SEARCHING_PRODUCTS
@@ -28,17 +28,8 @@ export const searchProductsByName = (name)=>{
         }).catch(error=>{
 
             if (error.response){
-                Alert.closeAll();
-            Alert.error(error.response.data,{
-                timeout: 3000,
-                position: 'top-right',
-                effect: 'slide',
-            });}else{
-                Alert.error("Can't search item because the server is offline",{
-                    timeout: 3000,
-                    position: 'top-right',
-                    effect: 'slide',
-                });
+            message.error(error.response.data,3);}else{
+                message.error("Can't search item because the server is offline",3);
             }
             dispatch(searchProductsFail());
         })

@@ -14,6 +14,10 @@ import { categoriesReducer } from '../components/categories/CategoryReducer';
 import {topViewReducer} from './topViewReducer';
 import {loadingScreenReducer} from './LoadingScreenReducer';
 import { commentsReducer } from '../components/comment/CommentReducer';
+import { seenProductsReducer } from '../components/products/top_product/product_user/seen_product/SeenProductReducer';
+import {deliveryAddressesReducer} from '../components/user/delivery_address/DeliveryAddressReducer';
+import { addressTypeReducer } from '../components/user/delivery_address/AddressTypeReducer';
+import { paymentMethodReducer } from '../components/checkout/PaymentMethodReducer';
 
 export const rootReducer = combineReducers({
     cart: cartReducer,
@@ -29,5 +33,9 @@ export const rootReducer = combineReducers({
     categories: categoriesReducer,
     topViewList: topViewReducer,
     loadingScreenEnabled: loadingScreenReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    seenProducts: seenProductsReducer,
+    deliveryAddresses: deliveryAddressesReducer,
+    addressTypes: addressTypeReducer,
+    paymentMethods: paymentMethodReducer
 })

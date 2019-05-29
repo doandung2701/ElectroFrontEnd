@@ -41,6 +41,7 @@ class SelectCategory extends React.Component{
                             Category
                          </DropdownToggle>
                          <DropdownMenu>
+                           {console.log(this.props.categories.categories)}
                          {this.props.categories.categories.map(value=>(
                                <Dropdown.Item as="span" key={value.categoryId}><Link to={{pathname: `/products/categories/${value.categoryId}`,state:{categoryId: value.categoryId}}}>
                                         {value.categoryName}

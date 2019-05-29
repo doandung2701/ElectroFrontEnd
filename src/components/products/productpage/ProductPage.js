@@ -10,6 +10,8 @@ import ReviewContainer from '../../review/ReviewContainer';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { HOME_TITLE } from '../../../constants/constants';
 import CommentListContainer from '../../comment/CommentListContainer';
+import { increaseViewCountApi } from '../../../api/ProductsApi';
+import ModalGallery from '../../common/ModalGallery';
 
 class ProductPage extends React.Component{
 
@@ -17,8 +19,11 @@ class ProductPage extends React.Component{
 		super(props);
 		this.state = {
 			currentDetails: 0,
-			specVisible: false
+			specVisible: false,
+			modalVisible: false
 		}
+		const id = this.props.match.params.id;
+		this.props.getSingleProduct(id);
 	}
 
 	closeSpec = ()=>{
@@ -35,7 +40,15 @@ class ProductPage extends React.Component{
 
 	componentDidMount(){
 		const id = this.props.match.params.id;
-		this.props.getSingleProduct(id);
+		if (this.props.isLoggedIn) {
+			this.props.addSeenProduct(id);
+		} else {
+			this.props.addSeenProductLocal({
+				productId: this.props.singleProduct.product.productId,
+				productName: this.props.singleProduct.product.productName,
+				thumbnail: this.props.singleProduct.product.thumbnail
+			});
+		}
 		var img = document.getElementsByClassName("product-page-img-sm")[0];
 		if (img) img.click();
 		let sc = document.getElementsByClassName("select-color")[0];
@@ -54,8 +67,19 @@ class ProductPage extends React.Component{
 			this.props.getSingleProduct(id);
 			this.props.getReviewByProductId(id);
 			this.props.getCommentsByProductId(id);
+			increaseViewCountApi(id);
+			if (this.props.isLoggedIn) {
+				this.props.addSeenProduct(id);
+			} else {
+				this.props.addSeenProductLocal({
+					productId: this.props.singleProduct.product.productId,
+					productName: this.props.singleProduct.product.productName,
+					thumbnail: this.props.singleProduct.product.thumbnail
+				});
+			}
 			}
 		})
+		increaseViewCountApi(id);
 	}
 
 	componentWillUnmount(){
@@ -129,11 +153,26 @@ class ProductPage extends React.Component{
 		})
 	}
 
+	openModalGal = ()=>{
+		this.setState({
+			modalVisible: true
+		})
+	}
+
+	closeModalGal = ()=>{
+		this.setState({
+			modalVisible: false
+		})
+	}
+
+
     render(){
 		var product = this.props.singleProduct.product;
 		document.title = product.productName;
 		var loading = this.props.singleProduct.isLoading;
 		var productDetails = product.productDetails.slice();
+		var isDiscountValid = productDetails[this.state.currentDetails].discount>0
+		&&new Date(productDetails[this.state.currentDetails].discountExDate)>Date.now();
         return(
 			// <Fragment>	{loading?
 			// 	<div style={{marginLeft: '35%'}}>
@@ -144,6 +183,9 @@ class ProductPage extends React.Component{
 				<Fragment>
                 <Banner2 />
 				<BreadCrumb location={this.props.location} name={product.productName} />
+				{this.state.modalVisible&&
+				<ModalGallery onClose={this.closeModalGal}
+				imgs={productDetails[this.state.currentDetails].productImg}/>}
             <div className="banner-bootom-w3-agileits py-5">
 		<div className="container py-xl-4 py-lg-2">
 			<h3 className="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -152,7 +194,7 @@ class ProductPage extends React.Component{
 			<div className="row">
 			<div  className="col-lg-5 col-md-8 single-right-left">
 					<div>
-						<img id="product-page-img-large" 
+						<img id="product-page-img-large" onClick={this.openModalGal} style={{cursor: 'pointer'}}
 						src={productDetails[this.state.currentDetails].productImg[0].imgUrl}
 						 height="450px" alt=""/>
 					</div>
@@ -170,9 +212,13 @@ class ProductPage extends React.Component{
 				<div className="col-lg-7 single-right-left simpleCart_shelfItem">
 					<h3 className="mb-3">{product.productName}</h3>
 					<p className="mb-3">
-						<span className="item_price">${productDetails[this.state.currentDetails].price-
-							productDetails[this.state.currentDetails].price*productDetails[this.state.currentDetails].discount/100}</span>
-						{productDetails[this.state.currentDetails].discount>0?<del className="mx-2 font-weight-light">${productDetails[this.state.currentDetails].price}</del>:''}
+						<span className="item_price">
+						{isDiscountValid?
+						`$${productDetails[this.state.currentDetails].price-
+							productDetails[this.state.currentDetails].price*
+							productDetails[this.state.currentDetails].discount/100}`:
+							`$${productDetails[this.state.currentDetails].price}`}</span>
+						{isDiscountValid?<del className="mx-2 font-weight-light">${productDetails[this.state.currentDetails].price}</del>:''}
 						<label>&nbsp; Free delivery</label>
 					</p>
 					<div className="single-infoagile">

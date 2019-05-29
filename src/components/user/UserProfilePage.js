@@ -6,6 +6,7 @@ import BreadCrumb from '../common/BreadCrumb';
 import EditProfileContainer from './edit_profile/EditProfileContainer';
 import MailBox from './maibox/MailBox';
 import { topTop } from '../../helpers/helper';
+import DeliveryAddress from './delivery_address/DeliveryAddress';
 
 class UserProfilePage extends React.Component{
 
@@ -18,6 +19,11 @@ class UserProfilePage extends React.Component{
         topTop(200);
 
     }
+
+    toggleManageCtn= ()=>{
+        document.getElementsByClassName("manage-ctn")[0].classList.toggle("active");
+    }
+
 
     toggleLinkCtn = (index)=>{
         document.getElementsByClassName("link-ctn")[index].classList.toggle("active");
@@ -70,10 +76,14 @@ class UserProfilePage extends React.Component{
                     <div className="transac-manage">
                         <p className="title" onClick={()=>this.toggleLinkCtn(1)}>Transaction Management</p>
                         <div className="link-ctn active">
-                        <Link to="/"> <i className="fas fa-file-alt"></i>&nbsp;&nbsp;Orders</Link>
-                        <Link to="/"> <i className="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
+                        <Link to="/" onClick={()=>this.toggleActiveNavItem(3)} className="nav-item"
+                        > <i className="fas fa-file-alt"></i>&nbsp;&nbsp;Orders</Link>
+                        <Link to="/account/my-profile/delivery-address" className="nav-item"
+                        onClick={()=>this.toggleActiveNavItem(4)}> 
+                        <i className="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
                         Delivery Address</Link>
-                        <Link to="/"> <i className="fas fa-heart"></i>&nbsp;&nbsp;
+                        <Link to="/" onClick={()=>this.toggleActiveNavItem(5)} className="nav-item"
+                        > <i className="fas fa-heart"></i>&nbsp;&nbsp;
                         Favorite products</Link>
                         </div>
                     </div>
@@ -83,7 +93,8 @@ class UserProfilePage extends React.Component{
                <Switch>
                     <Route path={"/account/my-profile/abc"} exact  component={MailBox} />
                     <Route path={`/account/my-profile/edit-info`} exact component={EditProfileContainer} />
-                    </Switch>
+                    <Route path="/account/my-profile/delivery-address" exact component={DeliveryAddress}></Route>
+                </Switch>
                </div>
             </div>
             </Fragment>

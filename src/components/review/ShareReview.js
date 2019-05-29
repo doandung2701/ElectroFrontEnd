@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rate } from 'antd';
+import { Rate, message } from 'antd';
 
 class ShareReview extends React.Component{
 
@@ -27,6 +27,19 @@ class ShareReview extends React.Component{
         })
     }
 
+    addReview = ()=>{
+        if (this.state.reviewContent.length>0){
+            this.props.addReview(this.state);
+            this.setState({
+                reviewScore: 0,
+                reviewHeader: '',
+                reviewContent: '',
+            })
+        }else{
+            message.warning("Review content must not be null!");
+        }
+    }
+
     render(){
         return(
             <div className="share-review">
@@ -42,14 +55,14 @@ class ShareReview extends React.Component{
                     placeholder="Header..."/>
                     </div>
                     <div>
-                    <label htmlFor="reviewContent">Type your review below (at least 50 character): </label>
+                    <label htmlFor="reviewContent">Type your review below: </label>
                     {/* <br/> */}
                     <textarea name="reviewContent" id="reviewContent"
                     value={this.state.reviewContent} onChange={this.handleInputChange}                    
                     placeholder="Your review..."/>
                     {/* <br /> */}
                     </div>
-                    <button id="btn-sm" onClick={()=>this.props.addReview(this.state)}>Submit</button>
+                    <button id="btn-sm" onClick={this.addReview}>Submit</button>
                 </div>
             </div>
         )

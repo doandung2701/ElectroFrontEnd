@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import { changeCartItemQtyAsync } from './CartAction';
+import { changeCartItemQtyAsync, changeCartItemQty } from './CartAction';
 import CartList from './CartList';
 
 var mapStateToProps = state=>{
@@ -12,6 +12,9 @@ var mapDispatchToProp = dispatch =>{
     return {
         changeCartItemQty: (payload,itemToChange)=>{
             dispatch(changeCartItemQtyAsync(payload,itemToChange));
+        },
+        changeCartItemQty1: (id,qty)=>{
+            dispatch(changeCartItemQty(id,qty))
         }
     }
 }

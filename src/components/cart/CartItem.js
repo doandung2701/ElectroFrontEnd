@@ -1,48 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Alert from 'react-s-alert';
 
 class CartItem extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            quantity: this.props.quantity,
-            price: this.props.price,
-        }
-    }
-
     handleQuantityChange = (e) => {
-        var value = parseInt(e.target.value);
-        if (value&&value>0) {
-            this.props.onQtyChange({
-                prodDetailId: this.props.id,
-                currentQty: this.props.quantity,
-                nextQty: value
-            }, {
-                prodDetailId: this.props.id
-            })
-            this.setState({
-                quantity: value,
-            });
-            this.setState((state, props) => ({
-                price: state.quantity * props.price
-            }))
-        }else{
-            Alert.error("Invalid input",{
-                position: 'top',
-                timeout: 3000,
-                effect: 'slide'
-            })
-        }
+        var value = Math.abs(parseInt(e.target.value));
+        if (isNaN(value)) value = 0;
+           this.props.onQtyChange1(this.props.id,value);
     }
 
-    componentDidUpdate(){//resync state
-        if (this.props.quantity!==this.state.quantity){
-            this.setState({
-                quantity: this.props.quantity
-            })
-        }
+    onConfirmQty = ()=>{
+        this.props.onQtyChange({
+            prodDetailId: this.props.id,
+            currentQty: this.props.quantity,
+            nextQty: this.props.quantity
+        }, {
+            prodDetailId: this.props.id
+        })
     }
 
     render(){
@@ -52,10 +26,10 @@ class CartItem extends React.Component{
                 <Link to={{pathname: `/products/single/${this.props.productId}`}} className="cart-item-name">
                 {this.props.name} ({this.props.color})</Link>
                 <div className="cart-item-details-quantity">
-                    <input type="number" name="quantity"
-                    min={1}
-                        value = {this.state.quantity}
+                    <input type="text" name="quantity"
+                        value = {this.props.quantity}
                         onChange={this.handleQuantityChange}
+                        onBlur={this.onConfirmQty}
                     className="cart-item-quantity" />
                 </div>
                 <div className="cart-item-details-remove"
@@ -72,7 +46,7 @@ class CartItem extends React.Component{
                         className="fas fa-times"></i></button>
                 </div>
                 <div className="cart-item-details-price">
-                    <span className="cart-item-price">${this.state.price}</span>
+                    <span className="cart-item-price">${this.props.price}</span>
                 </div>
             </li>
         )

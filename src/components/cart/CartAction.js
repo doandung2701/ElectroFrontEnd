@@ -7,11 +7,12 @@ import {
     CHANGE_CART_ITEM_QTY,
     ENABLE_LOADING_SCREEN,
     DISABLE_LOADING_SCREEN,
+    REMOVE_ALL_CART_ITEM,
 } from "../../constants/constants";
 import {
     changeCartItemQtyApi
 } from "../../api/ProductsApi";
-import Alert from 'react-s-alert';
+import { message } from "antd";
 
 export const changeCartItemQtyAsync = (payload, itemToChange) => {
     return dispatch => {
@@ -21,11 +22,7 @@ export const changeCartItemQtyAsync = (payload, itemToChange) => {
             dispatch(changeCartItemQtySuccess())
             if (payload.currentQty === 0) {
                 dispatch(addNewCartItem(itemToChange));
-                Alert.success("Added to your cart", {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.success("Added to your cart", 3);
             } else if (payload.nextQty === 0) {
                 dispatch(removeCartItem(itemToChange.prodDetailId));
             } else {
@@ -34,17 +31,9 @@ export const changeCartItemQtyAsync = (payload, itemToChange) => {
             dispatch(disableLoadingScreen());
         }).catch(error => {
             if (error.response) {
-                Alert.error(error.response.data, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error(error.response.data, 3);
             } else if (!error.response) {
-                Alert.error("Undefined error happened :(", {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("Undefined error happened :(", 3);
             }
             dispatch(changeCartItemQtyFail());
             dispatch(disableLoadingScreen());
@@ -71,7 +60,7 @@ const addNewCartItem = (item) => ({
     item
 })
 
-const changeCartItemQty = (id, qty) => ({
+export const changeCartItemQty = (id, qty) => ({
     type: CHANGE_CART_ITEM_QTY,
     id,
     qty
@@ -88,4 +77,8 @@ export const enableLoadingScreen = () => ({
 
 export const disableLoadingScreen = ()=>({
     type: DISABLE_LOADING_SCREEN
+})
+
+export const removeAllCartItem = ()=>({
+    type: REMOVE_ALL_CART_ITEM
 })

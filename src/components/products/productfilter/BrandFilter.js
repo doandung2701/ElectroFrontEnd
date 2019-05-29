@@ -16,7 +16,6 @@ class BrandFilter extends React.Component{
 
     render(){
         var brands = this.props.brands;
-        console.log(this.props.brands);
         return(
           <div className="left-side border-bottom py-2 brand-filter">
           <h3 className="agileits-sear-head mb-3">Brands</h3>

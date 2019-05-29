@@ -15,7 +15,7 @@ class FirstTopProductSection extends React.Component{
     getPagable = (location)=>{
         var pageable = null;
         if (location.pathname === "/") {
-            topTop(900);
+            topTop(0);
             pageable = {
                 page: 1,
                 rows: 3,
@@ -25,7 +25,7 @@ class FirstTopProductSection extends React.Component{
             this.props.getProductsCount();
             this.props.getProducts(pageable);
         }else if(location.pathname.indexOf("/brands")>0){
-            topTop(750);
+            topTop(0);
             pageable={
                 page: 1,
                 rows: 9,
@@ -37,7 +37,7 @@ class FirstTopProductSection extends React.Component{
             this.props.getProductsByBrand(location.state.brandId,pageable);
 
         } else if(location.pathname.indexOf("/categories")>0){
-            topTop(750);
+            topTop(0);
             pageable={
                 page: 1,
                 rows: 9,
@@ -50,7 +50,7 @@ class FirstTopProductSection extends React.Component{
 
         } 
         else if(location.pathname.indexOf("/all-products")>0){
-            topTop(750);
+            topTop(0);
             pageable = {
                 page: 1,
                 rows: 9,
@@ -64,7 +64,7 @@ class FirstTopProductSection extends React.Component{
 
     componentDidMount() {
         this.getPagable(this.props.location);
-        history.listen((location) => {
+        this.listen = history.listen((location) => {
             this.getPagable(location);           
         })
     }

@@ -136,6 +136,8 @@
     cursor: pointer;
 }
 
+
+
 @media screen and (max-width: 1000px) {
 
     .user-profile-page .profile-page-content .form-section,
@@ -157,7 +159,7 @@
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
 
     .user-profile-page .profile-page-nav,
     .user-profile-page .profile-page-content {
@@ -171,6 +173,7 @@
     .user-profile-page .profile-page-nav {
         margin-bottom: 20px;
         border: none;
+        overflow: auto;
     }
 
     .user-profile-page .profile-page-content .ava-section {
@@ -222,21 +225,22 @@
     transition: opacity 500ms ease-in;
 }
 
-.manage-ctn .nav-item.active{
+.manage-ctn .nav-item.active {
     background-color: red;
     color: white;
 }
 
-.profile-page-content .page-content-item{
+.profile-page-content .page-content-item {
     animation: slide 0.5s;
 
 }
 
 @keyframes slide {
-    0%{
+    0% {
         transform: translateX(-100%);
     }
-    100%{
-        transform: translateX(0);        
+
+    100% {
+        transform: translateX(0);
     }
 }

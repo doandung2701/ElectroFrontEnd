@@ -5,16 +5,22 @@ import {
     CHANGING_CART_ITEM_QTY,
     CHANGE_CART_ITEM_QTY_SUCCESS,
     CHANGE_CART_ITEM_QTY_FAIL,
-    ADD_NEW_CART_ITEM
+    ADD_NEW_CART_ITEM,
+    REMOVE_ALL_CART_ITEM
 } from "../constants/constants";
 
-const initialState = {
+const initialState = sessionStorage.getItem("cart") ? {
+    items: JSON.parse(sessionStorage.getItem("cart")),
+    isChanging: false,
+    error: false
+} : {
     items: [],
     isChanging: false,
     error: false
 }
 
 export const cartReducer = (state = initialState, action) => {
+    let items;
     switch (action.type) {
         case CHANGING_CART_ITEM_QTY:
             return {
@@ -35,25 +41,37 @@ export const cartReducer = (state = initialState, action) => {
                 error: true
             }
         case ADD_NEW_CART_ITEM:
+            items = [...state.items, action.item];
+            sessionStorage.setItem("cart", JSON.stringify(items));
             return {
                 ...state,
-                items: [...state.items, action.item]
+                items
             }
         case REMOVE_CART_ITEM:
+            items = state.items.filter((value) => {
+                return value.prodDetailId !== action.id
+            })
+            sessionStorage.setItem("cart", JSON.stringify(items));
             return {
                 ...state,
-                items: state.items.filter((value) => {
-                    return value.prodDetailId !== action.id
-                })
+                items
             }
 
         case CHANGE_CART_ITEM_QTY:
-            var items = [...state.items]; 
-            items.forEach(value=>{
-                if (value.prodDetailId===action.id){
+            items = [...state.items];
+            items.forEach(value => {
+                if (value.prodDetailId === action.id) {
                     value.currentQty = action.qty
                 }
             });
+            sessionStorage.setItem("cart", JSON.stringify(items));
+            return {
+                ...state,
+                items
+            }
+        case REMOVE_ALL_CART_ITEM: 
+            items = [];
+            sessionStorage.setItem("cart", JSON.stringify(items));
             return {
                 ...state,
                 items

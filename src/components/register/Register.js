@@ -2,7 +2,7 @@ import React from 'react';
 import './registerpage.css';
 import {Link} from 'react-router-dom';
 import { topTop} from '../../helpers/helper';
-import Alert from 'react-s-alert';
+import { message } from 'antd';
 
 class RegisterPage extends React.Component{
 
@@ -21,40 +21,20 @@ class RegisterPage extends React.Component{
     showErrorInputMsg = ()=>{
         
         if (this.state.firstName.length<1){
-            Alert.error("Please enter your first name",{
-                effect: 'slide',
-                timeout: 3000,
-                position: 'top-right'
-            })
+            message.error("Please enter your first name",3)
         }
         if (this.state.lastName.length<1){
-            Alert.error("Please enter your last name",{
-                effect: 'slide',
-                timeout: 3100,
-                position: 'top-right'
-            })
+            message.error("Please enter your last name",3.1)
         }
         if (this.state.username.length<1||this.state.username.length>15){
-            Alert.error("Username must be between 1 and 15 characters",{
-                effect: 'slide',
-                timeout: 3200,
-                position: 'top-right'
-            })
+            message.error("Username must be between 1 and 15 characters",3.2)
         }
         if (!this.state.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
         )){
-            Alert.error("Email must be in a correct form",{
-                effect: 'slide',
-                timeout: 3300,
-                position: 'top-right'
-            })
+            message.error("Email must be in a correct form",3.3)
         }
         if (this.state.password.length<6){
-            Alert.error("Password must be at least 6 characters",{
-                effect: 'slide',
-                timeout: 3300,
-                position: 'top-right'
-            })
+            message.error("Password must be at least 6 characters",3.4)
         }
     }
 
@@ -81,7 +61,7 @@ class RegisterPage extends React.Component{
 
     componentDidUpdate(){
         if (this.props.isRegistering){
-            Alert.info("Signing up, please wait...",{
+            message.info("Signing up, please wait...",{
                 timeout: 500000,
                 position: 'top-right',
                 effect: 'slide'

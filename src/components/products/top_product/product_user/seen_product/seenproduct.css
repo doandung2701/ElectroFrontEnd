@@ -1,0 +1,53 @@
+.drawer-seen-product .ant-drawer-body img{
+    width: 10%;
+    height: auto;
+    display: block;
+    margin: 5px;
+    float: left;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.25s;
+}
+.drawer-seen-product .ant-drawer-body img:hover{
+    transform: scale(1.1);
+}
+.drawer-seen-product .image-ctn{
+    width: 85%;
+    overflow: hidden;
+    text-align: center;
+    padding-left: 75px;
+}
+
+@media screen and (max-width: 900px){
+    .drawer-seen-product .ant-drawer-body img{
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .drawer-seen-product .ant-drawer-body img{
+        width: 25%;
+        margin: 0px;
+    }
+    .drawer-seen-product .image-ctn{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .drawer-seen-product .image-ctn{
+        width: 75%;
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .drawer-seen-product .ant-drawer-body img{
+        width: 33%;
+        margin: 0px;
+    }
+    .drawer-seen-product .image-ctn{
+        width: 70%;
+        padding: 0px;
+    }
+}

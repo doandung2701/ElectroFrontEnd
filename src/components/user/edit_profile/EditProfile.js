@@ -1,7 +1,6 @@
 import React from 'react';
-import { Modal, Upload, Popconfirm} from 'antd';
+import { Modal, Upload, Popconfirm, message} from 'antd';
 import { dummyRequest} from '../../../helpers/helper';
-import Alert from 'react-s-alert';
 import { HOME_TITLE } from '../../../constants/constants';
 
 
@@ -45,11 +44,7 @@ class EditProfile extends React.Component{
             this.handleCancel();
         }else{
             this.handleCancel();
-            Alert.info("Please select an avatar!",{
-                effect: 'slide',
-                timeout: 3000,
-                position: 'top-right',
-            })
+            message.info("Please select an avatar!",3);
         }
     }
 
@@ -61,11 +56,6 @@ class EditProfile extends React.Component{
         document.title = HOME_TITLE;
     }
     
-
-    toggleManageCtn= ()=>{
-        document.getElementsByClassName("manage-ctn")[0].classList.toggle("active");
-    }
-
     toggleLinkCtn = (index)=>{
         document.getElementsByClassName("link-ctn")[index].classList.toggle("active");
 

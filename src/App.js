@@ -10,7 +10,6 @@ import NotFound from './components/common/NotFound';
 import LoginPageContainer from './components/login/LoginPageContainer';
 import Contact from './components/contact/Contact';
 import RegisterPageContainer from './components/register/RegisterPageContainer';
-import Alert from 'react-s-alert';
 import './App.css';
 import {Router} from 'react-router-dom';
 import {history} from './helpers/helper'
@@ -23,7 +22,16 @@ import 'antd/dist/antd.css';
 import UserProfilePageContainer from './components/user/UserProfilePageContainer';
 import LoginModal from './components/login/LoginModal';
 import LoadingScreen from './components/common/LoadingScreen';
+import CheckOutContainer from './components/checkout/CheckOutContainer';
+import {StripeProvider,Elements} from 'react-stripe-elements';
 
+const checkOutContainer = (location)=>(
+  <StripeProvider apiKey="pk_test_fYDTdvCFqBgYkNvCT01iRPVu00rutQSTO4">
+  <Elements>
+      <CheckOutContainer location={location}/>
+    </Elements>
+</StripeProvider>
+)
 
 class App extends Component {
 
@@ -55,9 +63,9 @@ class App extends Component {
           <button id="to-top-btn" onClick={()=>topTop(0)}>
             <i className="fas fa-level-up-alt"></i>
           </button>
-          <Alert stack={{limit: 5}} />
           <LoadingScreen />
           <HeaderContainer />
+          
           <Switch>
               <Route path="/" exact component={TopProduct}/>
               <Route path="/editor" component={LoginModal}/>
@@ -68,6 +76,7 @@ class App extends Component {
               <Route path="/account/login" exact component={LoginPageContainer} />
               <Route path="/account/regis" exact component={RegisterPageContainer}/>
               <PrivateRoute path="/account/my-profile" component={UserProfilePageContainer}/>
+              <PrivateRoute path="/checkout/cart" exact component={(location)=>checkOutContainer(location)} />             
               <Route path="/contact" exact component={Contact}/>
               <Route component={NotFound} />
           </Switch>

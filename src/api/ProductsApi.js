@@ -1,4 +1,5 @@
 import Axios from "axios";
+import {authHeader} from '../helpers/helper';
 
 var axios = Axios.create({
     baseURL: 'http://localhost:8080/products',
@@ -83,4 +84,46 @@ export const getTopViewApi  = (pageable)=>{
 
 export const changeCartItemQtyApi = (payload)=>{
     return axios.put('/cart/change-qty',payload);
+}
+
+export const increaseViewCountApi = (productId)=>{
+    return axios.put("/save/increase-view-count",null,{
+        params: {
+            productId
+        }
+    });
+}
+
+export const addSeenProductApi = (productId)=>{
+    return axios.post("/save/add-seen-product",null,{
+        params:{
+            productId
+        },
+        headers:{
+            "Authorization": authHeader()
+        }
+    })
+}
+
+export const getSeenProductByUserIdApi = (pageable)=>{
+    return axios.get("/find/find-by-seen-user",{
+        params: {
+            page: pageable.page,
+            rows: pageable.rows
+        },
+        headers:{
+            "Authorization": authHeader()
+        }
+    })
+}
+
+export const getSeenProductsCountApi = (userId)=>{
+    return axios.get("/count/count-seen-product",{
+        params: {
+            userId
+        },
+        headers: {
+            "Authorization": authHeader()
+        }
+    })
 }

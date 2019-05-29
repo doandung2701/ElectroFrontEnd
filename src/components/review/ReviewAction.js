@@ -1,6 +1,7 @@
 import { GETTING_REVIEWS, GET_REVIEWS_SUCCESS, GET_REVIEWS_FAIL, SAVING_REVIEW, SAVE_REVIEW_SUCCESSS, SAVE_REVIEW_FAIL } from "../../constants/constants";
 import { getReviewByProductIdApi, addReviewApi } from "../../api/ReviewApi";
-import Alert from 'react-s-alert';
+import { message } from "antd";
+import { enableLoadingScreen, disableLoadingScreen } from "../cart/CartAction";
 
 const gettingReviews = ()=>({
     type: GETTING_REVIEWS
@@ -42,20 +43,20 @@ export const getReviewsByProductId = (productId)=>{
 export const saveReview = (review)=>{
     return dispatch=>{
         dispatch(savingReview());
+        dispatch(enableLoadingScreen());
         addReviewApi(review).then(data=>{
-            console.log(data.data);
+            dispatch(disableLoadingScreen());
             dispatch(saveReviewSuccess(data.data));
-            Alert.success("Saved review successfully");
+            message.success("Saved review successfully",3);
         }).catch(error=>{
-            Alert.error("Save review fail",{
+            dispatch(disableLoadingScreen());
+            message.error("Save review fail",{
                 effect: 'slide'
             });
                 
             dispatch(saveReviewFail());
             if (error){
-                Alert.error("Save review fail: "+error.response.data,{
-                    effect: 'slide'
-                });
+                message.error("Save review fail: "+error.response.data,3);
             }
         })
     }

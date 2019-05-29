@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import SelectBrandContainer from '../brands/SelectBrandContainer';
 import SelectCategoryContainer from '../categories/SelectCategoryContainer';
+import SeenProductContainer from '../products/top_product/product_user/seen_product/SeenProductContainer';
 
 class Navigation extends React.Component{
     render(){
@@ -41,9 +42,7 @@ class Navigation extends React.Component{
                 <li className="nav-item mr-lg-2 mb-lg-0 mb-2">
                   <a className="nav-link" href="about.html">About Us</a>
                 </li>
-                <li className="nav-item mr-lg-2 mb-lg-0 mb-2">
-                  <a className="nav-link" href="product.html">New Arrivals</a>
-                </li>
+              <SeenProductContainer />
                 <li className="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
                   <a className="nav-link dropdown-toggle" href="vl" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Pages

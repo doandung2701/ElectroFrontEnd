@@ -22,7 +22,7 @@ import {
     countByCategoryApi,
     getTopViewApi
 } from "../../api/ProductsApi";
-import Alert from 'react-s-alert';
+import { message } from "antd";
 
 
 export const fetchingProductsList = () => ({
@@ -120,21 +120,12 @@ export const getProductsList = (pageable) => {
             if (data)
                 dispatch(fetchProductsListSuccessfully(data.data))
         }).catch(error => {
-            Alert.closeAll();
             if (error.respose) {
                 dispatch(fetchProductsListFail(error.respose.data));
-                Alert.error("An Error Occured While Getting Product List:\n" + error.respose.data, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error.respose.data, 3);
             } else {
                 dispatch(fetchProductsListFail(error));
-                Alert.error("An Error Occured While Getting Product List:\n" + error, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error, 3);
             }
         })
     }
@@ -147,21 +138,13 @@ export const getProductsListByBrand = (brandId,pageable) => {
             if (data)
                 dispatch(fetchProductsListSuccessfully(data.data))
         }).catch(error => {
-            Alert.closeAll();
+            
             if (error.respose) {
                 dispatch(fetchProductsListFail(error.respose.data));
-                Alert.error("An Error Occured While Getting Product List:\n" + error.respose.data, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error.respose.data, 3);
             } else {
                 dispatch(fetchProductsListFail(error));
-                Alert.error("An Error Occured While Getting Product List:\n" + error, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error, 3);
             }
         })
     }
@@ -174,21 +157,13 @@ export const getProductsListByCategory = (categoryId,pageable) => {
             if (data)
                 dispatch(fetchProductsListSuccessfully(data.data))
         }).catch(error => {
-            Alert.closeAll();
+            
             if (error.respose) {
                 dispatch(fetchProductsListFail(error.respose.data));
-                Alert.error("An Error Occured While Getting Product List:\n" + error.respose.data, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error.respose.data, 3);
             } else {
                 dispatch(fetchProductsListFail(error));
-                Alert.error("An Error Occured While Getting Product List:\n" + error, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error, 3);
             }
         })
     }
@@ -201,21 +176,13 @@ export const getTopViewList = (pageable) => {
             if (data)
                 dispatch(getTopViewSuccess(data.data))
         }).catch(error => {
-            Alert.closeAll();
+            
             if (error.respose) {
                 dispatch(getTopViewFail(error.respose.data));
-                Alert.error("An Error Occured While Getting Product List:\n" + error.respose.data, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error.respose.data, 3);
             } else {
                 dispatch(getTopViewFail(error));
-                Alert.error("An Error Occured While Getting Product List:\n" + error, {
-                    position: 'top-right',
-                    effect: 'slide',
-                    timeout: 3000
-                });
+                message.error("An Error Occured While Getting Product List:\n" + error, 3);
             }
         })
     }
@@ -228,13 +195,9 @@ export const getProductById = (id) => {
         findById(id).then(data => {
             dispatch(fetchProductSuccessfully(data.data));
         }).catch(error => {
-            Alert.closeAll();
+            
             dispatch(fetchProductFail(error.respose.data));
-            Alert.error("An Error Occured While Getting Product:\n" + error.respose.data, {
-                position: 'top-right',
-                effect: 'slide',
-                timeout: 3000
-            });
+            message.error("An Error Occured While Getting Product:\n" + error.respose.data, 3);
         })
     }
 
